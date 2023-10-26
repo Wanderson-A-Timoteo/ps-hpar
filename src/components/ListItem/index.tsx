@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons/faTrashCan";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons/faPenToSquare";
-import { getTasks } from "../../api";
+import { deleteTasks, getTasks } from "../../api";
 import { Item } from '../types/Item';
 
 export const ListItem = () => {
@@ -25,6 +25,19 @@ export const ListItem = () => {
     fetchTasks();
   }, []);
 
+  const handleDelete = async (taskToDelete : Item) => {
+    try {
+      // Faça uma solicitação de exclusão à API usando a função deleteTasks
+      await deleteTasks(taskToDelete);
+  
+      // Atualize o estado local de tarefas removendo a tarefa excluída
+      const updatedTasks = tasks.filter(task => task.id !== taskToDelete.id);
+      setTasks(updatedTasks);
+    } catch (error) {
+      console.error('Ocorreu um erro ao excluir a tarefa:', error);
+    }
+  };
+
   return (
     <div>
       {error ? (
@@ -41,8 +54,18 @@ export const ListItem = () => {
               <label className="text-gray-300" > {task.description} </label>
             </div>
             <div className="flex gap-3">
-              <div className="hover:cursor-pointer hover:text-green-300"> <FontAwesomeIcon icon={faPenToSquare} /> </div>
-              <div className="hover:cursor-pointer hover:text-red-300"> <FontAwesomeIcon icon={faTrashCan} /> </div>
+              <button 
+                className="hover:cursor-pointer hover:text-green-300"
+                onClick={() => console.log(task)}
+              > 
+                <FontAwesomeIcon icon={faPenToSquare} /> 
+              </button>
+              <button 
+                className="hover:cursor-pointer hover:text-red-300"
+                onClick={() => handleDelete(task)}
+              > 
+                <FontAwesomeIcon icon={faTrashCan} /> 
+              </button>
             </div>
           </div>
         ))

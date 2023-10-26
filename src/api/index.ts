@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Item, PosItem } from '../components/types/Item';
+import { Item } from '../components/types/Item';
 
 const API_URL = "http://localhost:3000";
 
@@ -13,12 +13,21 @@ export const getTasks = async () => {
   }
 };
 
-export const postTasks = async (data: PosItem) => {
+export const postTasks = async (data: Item) => {
   try {
     const response = await axios.post<Item>(`${API_URL}/tasks`, data);
     return response.data;
   } catch (error) {
     console.error('Erro ao cadastrar tarefa:', error);
+    throw error;
+  }
+};
+
+export const deleteTasks = async (data: Item) => {
+  try {
+    await axios.delete(`${API_URL}/tasks/${data.id}`);
+  } catch (error) {
+    console.error('Erro ao excluir a tarefa:', error);
     throw error;
   }
 };

@@ -11,14 +11,10 @@ export const AddArea = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const updatedTasks = await getTasks();
-      setTasks(updatedTasks);
-    };
-
-    fetchData();
-
-  }, []); 
+    if(!tasks) {
+      getTasks();
+    }
+  }, [tasks]); 
 
   const handleNewTask = async (event: React.FormEvent) => {
     event.preventDefault();

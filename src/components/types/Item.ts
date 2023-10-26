@@ -1,10 +1,5 @@
 export type Item = {
-    id: number;
-    description: string;
-    done: boolean;
-}
-
-export type PosItem = {
+    id?: number;
     description: string;
     done: boolean;
 }
