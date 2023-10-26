@@ -21,19 +21,19 @@
       "id": 5
     },
     {
-      "description": "Tarefa 06",
+      "description": "Tarefa 06 atualizada",
       "done": false,
       "id": 6
-    },
-    {
-      "description": "Tarefa 07",
-      "done": false,
-      "id": 7
     },
     {
       "description": "Tarefa 08",
       "done": false,
       "id": 8
+    },
+    {
+      "description": "Tarefa 09",
+      "done": false,
+      "id": 9
     }
   ]
 }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Item } from '../components/types/Item';
+import { Item } from '../components/types';
 
 const API_URL = "http://localhost:3000";
 

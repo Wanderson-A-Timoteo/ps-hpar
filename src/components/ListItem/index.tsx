@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons/faTrashCan";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons/faPenToSquare";
 import { deleteTasks, getTasks, updateTask } from "../../api";
-import { EditingTaskProps, Item } from '../types/Item';
+import { EditingTaskProps, Item } from '../types';
 
 export const ListItem = ({ setEditingTask } : EditingTaskProps) => {
   const [tasks, setTasks] = useState<Item[]>([]);

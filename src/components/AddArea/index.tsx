@@ -2,7 +2,7 @@ import { useState, KeyboardEvent, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
 import { getTasks, postTasks, updateTask } from '../../api';
-import { EditingTaskProps } from '../types/Item';
+import { EditingTaskProps } from '../types';
 
 export const AddArea = ({ editingTask, setEditingTask } : EditingTaskProps) => {
   const [inputText, setInputText] = useState('');
@@ -49,12 +49,12 @@ export const AddArea = ({ editingTask, setEditingTask } : EditingTaskProps) => {
 
   return (
     <form onSubmit={handleNewTask}>
-      <div className='flex align-middle rounded-2xl p-3 my-5 text-gray-50 border-solid border-[1px]'>
-        <div className='mr-2 text-center text-gray-400'>
+      <div className='flex rounded-2xl p-3 my-5 text-gray-50 border-solid border-[1px]'>
+        <div className='mr-2 pt-[5px] text-gray-400'>
           <FontAwesomeIcon icon={faPlus} />
         </div>
         <input
-          className='flex-1 border-none bg-transparent text-lg text-gray-50 outline-none'
+          className='flex-1 pt-1 border-none bg-transparent text-lg text-gray-50 outline-none'
           type='text'
           placeholder='Adicione uma tarefa'
           value={editingTask ? editingTask.description : inputText}
@@ -67,7 +67,7 @@ export const AddArea = ({ editingTask, setEditingTask } : EditingTaskProps) => {
           }}
           onKeyUp={handleKeyUp}
         />
-        <button type='submit' className='w-24 h-7 bg-green-700 rounded-lg'>
+        <button type='submit' className='w-28 h-8 bg-green-700 rounded-lg'>
           Adicionar
         </button>
       </div>

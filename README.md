@@ -26,27 +26,19 @@ Aplicação de lista de tarefas, onde o usuário poderá adicionar uma nova tare
 
 Para adicionar uma tarefa após descreve-lá você poderá acionar o botão Enter do teclado ou clicar com mouse no botão verde adicionar, devido estar usando json-server no back-end, ao fazer uma operação é necessário atualizar a página para mostrar na tela.
 
-### SpaceTime Gif
+### Lista de tarefas
 
 <p align="center">
-    <img alt="SpaceTime Animado em Gif" title="SpaceTime Animado em Gif" 
-    src=".github/ps-hpar.gif" />
-</p>
-<br>
-
-### Lista de Tarefas
-
-<p align="center">
-    <img alt="Home sem login" title="Home sem login" 
+    <img alt="Lista de tarefas" title="Lista de tarefas" 
     src=".github/ps-hpar-lista-de-tarefas.png" />
 </p>
 
 <br>
 
-### Lista de Tarefas Marcadas como concluídas
+### Lista de tarefas marcadas como concluídas
 
 <p align="center">
-    <img alt="Home logado" title="Home logado" 
+    <img alt="Lista de tarefas marcadas como concluídas" title="Lista de tarefas marcadas como concluídas" 
     src=".github/ps-hpar-lista-de-tarefas-true.png" />
 </p>
 <br>

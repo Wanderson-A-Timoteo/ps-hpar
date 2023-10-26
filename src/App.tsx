@@ -1,7 +1,7 @@
 import { ListItem } from './components/ListItem';
 import { AddArea } from './components/AddArea';
 import { useState } from 'react';
-import { Item } from './components/types/Item';
+import { Item } from './components/types';
 
 export const App = () => {  
   const [editingTask, setEditingTask] = useState<Item | null>(null);
