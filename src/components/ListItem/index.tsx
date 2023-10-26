@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons/faTrashCan";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons/faPenToSquare";
 import { deleteTasks, getTasks } from "../../api";
-import { Item } from '../types/Item';
+import { EditingTaskProps, Item } from '../types/Item';
 
-export const ListItem = () => {
+export const ListItem = ({ setEditingTask } : EditingTaskProps) => {
   const [tasks, setTasks] = useState<Item[]>([]);
   const [error, setError] = useState<string | null>(null);
   
@@ -19,18 +19,19 @@ export const ListItem = () => {
           setTasks(data);
         }
       } catch (err) {
-        setError('Ocorreu um erro ao buscar as tarefas. Por favor, tente novamente.');
+        setError('Ocorreu um erro ao buscar as tarefas. Por favor, tente novamente mais tarde.');
       }
     }
     fetchTasks();
   }, []);
 
+  const handleUpdate = async (taskToUpdate : Item) => {
+    setEditingTask(taskToUpdate);
+  };
+
   const handleDelete = async (taskToDelete : Item) => {
     try {
-      // Faça uma solicitação de exclusão à API usando a função deleteTasks
       await deleteTasks(taskToDelete);
-  
-      // Atualize o estado local de tarefas removendo a tarefa excluída
       const updatedTasks = tasks.filter(task => task.id !== taskToDelete.id);
       setTasks(updatedTasks);
     } catch (error) {
@@ -49,14 +50,14 @@ export const ListItem = () => {
               <input 
                 className="w-5 h-5 mr-2 align-middle hover:cursor-pointer"
                 type="checkbox" 
-                checked={task.done}
+                //checked={task.done}
               />
               <label className="text-gray-300" > {task.description} </label>
             </div>
             <div className="flex gap-3">
               <button 
                 className="hover:cursor-pointer hover:text-green-300"
-                onClick={() => console.log(task)}
+                onClick={() => handleUpdate(task)}
               > 
                 <FontAwesomeIcon icon={faPenToSquare} /> 
               </button>

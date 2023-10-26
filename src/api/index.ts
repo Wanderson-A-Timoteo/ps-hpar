@@ -23,6 +23,15 @@ export const postTasks = async (data: Item) => {
   }
 };
 
+export const updateTask = async (data: Item) => {
+  try {
+    await axios.put(`${API_URL}/tasks/${data.id}`, data);
+  } catch (error) {
+    console.error('Erro ao atualizar a tarefa:', error);
+    throw error;
+  }
+};
+
 export const deleteTasks = async (data: Item) => {
   try {
     await axios.delete(`${API_URL}/tasks/${data.id}`);

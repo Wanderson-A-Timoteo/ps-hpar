@@ -1,40 +1,43 @@
 import { useState, KeyboardEvent, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
-import { postTasks } from '../../api';
-import { getTasks } from '../../api';
-import { Item } from '../types/Item';
+import { getTasks, postTasks, updateTask } from '../../api';
+import { EditingTaskProps } from '../types/Item';
 
-export const AddArea = () => {
+export const AddArea = ({ editingTask, setEditingTask } : EditingTaskProps) => {
   const [inputText, setInputText] = useState('');
-  const [tasks, setTasks] = useState<Item[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if(!tasks) {
-      getTasks();
-    }
-  }, [tasks]); 
+    const fetchData = async () => {
+      await getTasks();
+    };
+
+    fetchData();
+  }, []);
 
   const handleNewTask = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (!inputText) {
+    if (!inputText && !editingTask) {
       return;
     }
 
     try {
-      const data = {
-        description: inputText,
-        done: false,
-      };
-
-      await postTasks(data);
+      if (editingTask) {
+        await updateTask(editingTask);
+        setEditingTask(null);
+      } else {
+        const data = {
+          description: inputText,
+          done: false,
+        };
+        await postTasks(data);
+      }
       setInputText('');
 
-      const updatedTasks = await getTasks();
-      setTasks(updatedTasks);
+      await getTasks();
     } catch (error) {
-      setError('Ocorreu um erro ao cadastrar a tarefa. Por favor, tente novamente mais tarde.');
+      setError('Ocorreu um erro ao cadastrar/atualizar a tarefa. Por favor, tente novamente mais tarde.');
     }
   };
 
@@ -54,8 +57,14 @@ export const AddArea = () => {
           className='flex-1 border-none bg-transparent text-lg text-gray-50 outline-none'
           type='text'
           placeholder='Adicione uma tarefa'
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
+          value={editingTask ? editingTask.description : inputText}
+          onChange={(e) => {
+            if (editingTask) {
+              setEditingTask({ ...editingTask, description: e.target.value });
+            } else {
+              setInputText(e.target.value);
+            }
+          }}
           onKeyUp={handleKeyUp}
         />
         <button type='submit' className='w-24 h-7 bg-green-700 rounded-lg'>
