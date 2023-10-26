@@ -1,12 +1,7 @@
 {
   "tasks": [
     {
-      "description": "Tarefa 01",
-      "done": false,
-      "id": 1
-    },
-    {
-      "description": "Tarefa 02",
+      "description": "Tarefa 02 atualizada",
       "done": false,
       "id": 2
     },
@@ -17,13 +12,28 @@
     },
     {
       "description": "Tarefa 04",
-      "done": false,
+      "done": true,
       "id": 4
     },
     {
       "description": "Tarefa 05",
       "done": false,
       "id": 5
+    },
+    {
+      "description": "Tarefa 06",
+      "done": false,
+      "id": 6
+    },
+    {
+      "description": "Tarefa 07",
+      "done": false,
+      "id": 7
+    },
+    {
+      "description": "Tarefa 08",
+      "done": false,
+      "id": 8
     }
   ]
 }
