@@ -98,7 +98,7 @@ Ao digitar a instrução acima, automaticamente irá baixar todas as dependênci
 
 Após baixar todas as dependências é só digitar no terminal a instrução abaixo:
 
-Para subir a APIcom json-server vamos usar o comando:
+Para subir a API com json-server vamos usar o comando:
 
 ```sh
 json-server --watch ./database/db.json
@@ -116,7 +116,7 @@ ou
 yarn dev
 ```
 
-Pronto! dessa forma o projeto `ps-hpar` estará rodando localmente em sua maquina. Acesse no navegador o endereço abaixo:
+Pronto! dessa forma o projeto `ps-hpar` estará rodando localmente em sua máquina. Acesse no navegador o endereço abaixo:
 
 **Json Server (API)**
 
@@ -150,4 +150,4 @@ Feito com ♥ by
 
 <div align='center'>
 
-[<img src="https://avatars.githubusercontent.com/u/40473246?v=4" width=115><br><sub>Wanderson A. Timóteo</sub>](https://www.wandersontimoteo.ga/)
+[<img src="https://avatars.githubusercontent.com/u/40473246?v=4" width=115><br><sub>Wanderson A. Timóteo</sub>](hhttps://wanderson-a-timoteo.github.io/my-portfolio-dark-light/)
