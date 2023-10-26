@@ -67,7 +67,7 @@ export const AddArea = ({ editingTask, setEditingTask } : EditingTaskProps) => {
           }}
           onKeyUp={handleKeyUp}
         />
-        <button type='submit' className='w-28 h-8 bg-green-700 rounded-lg'>
+        <button type='submit' className='w-28 h-8 bg-green-700 rounded-lg hover:bg-green-600'>
           Adicionar
         </button>
       </div>
